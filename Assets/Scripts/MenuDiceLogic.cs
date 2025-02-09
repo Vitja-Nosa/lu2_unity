@@ -39,4 +39,13 @@ public class MenuDiceLogic : MonoBehaviour
         positionInWorld.z = 0;
         return positionInWorld;
     }
+
+    public void ResetBtn()
+    {
+        GameObject[] dices = GameObject.FindGameObjectsWithTag("dice");
+        foreach (GameObject die in dices)
+        {
+            Destroy(die);
+        }
+    }
 }
