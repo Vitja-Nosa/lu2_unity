@@ -6,10 +6,16 @@ using UnityEngine;
 */
 public class Draggable: MonoBehaviour
 {
+    public MenuDiceLogic MenuDiceLogic;
     public Transform trans;
  
-    private bool isDragging = false;
+    private bool isDragging = true;
 
+    public void Start()
+    {
+        GameObject canvas = GameObject.Find("MenuDiceLogic");
+        MenuDiceLogic = canvas.GetComponent<MenuDiceLogic>();
+    }
     public void StartDragging()
     {
         isDragging = true;
@@ -23,11 +29,12 @@ public class Draggable: MonoBehaviour
 
     private void OnMouseUpAsButton()
     {
+        MenuDiceLogic.ShowCanvas(false);
         isDragging = !isDragging;
 
         if (!isDragging)
         {
-            // Stopped dragging. Add any logic here that you need for this scenario.
+            MenuDiceLogic.ShowCanvas(true);
         }
     }
 
